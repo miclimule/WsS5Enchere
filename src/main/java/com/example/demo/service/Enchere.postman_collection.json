@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "8cf8a9f9-f2cb-457c-8656-c4180e4ddcf0",
+		"name": "Enchere",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/login?nom=mic&mdp=root",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "mic"
+						},
+						{
+							"key": "mdp",
+							"value": "root"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "liste enchere en cours",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/listEnchere",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listEnchere"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list produit",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "add enchere",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addEnchere?desc=two&datedepart=2023-01-20&duree=150&idmaterielle=2&qte=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addEnchere"
+					],
+					"query": [
+						{
+							"key": "desc",
+							"value": "two"
+						},
+						{
+							"key": "datedepart",
+							"value": "2023-01-20"
+						},
+						{
+							"key": "duree",
+							"value": "150"
+						},
+						{
+							"key": "idmaterielle",
+							"value": "2"
+						},
+						{
+							"key": "qte",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add produit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addProduit?nom=tableau&prixminimal=4000&datedebut=2023-01-20&duree=50&idcategory=4&idclient=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addProduit"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "tableau"
+						},
+						{
+							"key": "prixminimal",
+							"value": "4000"
+						},
+						{
+							"key": "datedebut",
+							"value": "2023-01-20"
+						},
+						{
+							"key": "duree",
+							"value": "50"
+						},
+						{
+							"key": "idcategory",
+							"value": "4"
+						},
+						{
+							"key": "idclient",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addCategory?types=art",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addCategory"
+					],
+					"query": [
+						{
+							"key": "types",
+							"value": "art"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getCategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addClient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addClient?nom=mic&mdp=root",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addClient"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "mic"
+						},
+						{
+							"key": "mdp",
+							"value": "root"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getProduit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getProduit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get enchere",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/listEnchere",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listEnchere"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHistorique",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getHistorique?idEnchere=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getHistorique"
+					],
+					"query": [
+						{
+							"key": "idEnchere",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "encherire",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/encherire?idenchere=2&montant=5001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"encherire"
+					],
+					"query": [
+						{
+							"key": "idenchere",
+							"value": "2"
+						},
+						{
+							"key": "montant",
+							"value": "5001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "historiques",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/historique",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historique"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDemande",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getDemande",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getDemande"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDemande",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addDemande?montant=5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addDemande"
+					],
+					"query": [
+						{
+							"key": "montant",
+							"value": "5000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateDemande",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/validateDemande?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validateDemande"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test Mongo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getMongo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getMongo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "set mongo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/setMongo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"setMongo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/createToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
