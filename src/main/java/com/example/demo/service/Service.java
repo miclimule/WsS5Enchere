@@ -147,6 +147,15 @@ public class Service {
 			return "error : " + e.toString();
 		}
 	}
+	@GetMapping("/addAdmins")
+	public String addAdmins(@RequestParam("nom") String nom , @RequestParam("mdp") String mdp) {
+		try {
+			db.update("insert into admins values (default , '"+nom+"' , '"+mdp+"')");
+			return "finish";
+		} catch (Exception e) {
+			return "error : " + e.toString();
+		}
+	}
 	
 	@GetMapping("/listEnchere")
 	public List<Enchere> listEnchere() {
