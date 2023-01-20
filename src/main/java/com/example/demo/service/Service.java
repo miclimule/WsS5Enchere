@@ -202,9 +202,9 @@ public class Service {
 	}
 	
 	@GetMapping("/updateEnchere")
-	public String updateEnchere(@RequestParam("idEnchere") int idEnchere ,@RequestParam("idProduit") int idProduit , @RequestParam("qte") int qte , @RequestParam("duree") int duree , @RequestParam("status") int status , @RequestParam("commision") int commision) {
+	public String updateEnchere(@RequestParam("idEnchere") int idEnchere  , @RequestParam("qte") int qte , @RequestParam("duree") int duree , @RequestParam("status") int status , @RequestParam("commision") int commision) {
 		try {
-			db.update("update enchere set idmaterielle="+idProduit+", dureeenchere="+duree+" , isfinish="+status+" , qte="+qte+" , commision="+commision+"  where id ="+idEnchere);
+			db.update("update enchere set dureeenchere="+duree+" , isfinish="+status+" , qte="+qte+" , commision="+commision+"  where id ="+idEnchere);
 			return "finish";
 		} catch (Exception e) {
 			return "problem : "+ e.getMessage();
