@@ -107,8 +107,9 @@ public class Service {
 	
 	public int getIdClient(String uuid) {
 		try {
-			System.out.println("\"select * from token where value='"+uuid+"' and dateajout > now()");
+			System.out.println("select * from token where value='"+uuid+"' and dateajout > now()");
 			List<Token> users = db.query("select * from token where value='"+uuid+"' and dateajout > now()",  new BeanPropertyRowMapper<Token>(Token.class));
+			System.out.println(users.get(1).getIdclient());
 			return users.get(0).getIdclient();
 		} catch (Exception e) {
 			return 0;
