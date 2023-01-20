@@ -138,6 +138,34 @@ public class Service {
 		}
 	}
 	
+	@GetMapping("/search")
+	public List<Enchere> search(@RequestParam("nom") String nom) {
+		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where m.nom='"+nom+"'",  new BeanPropertyRowMapper<Enchere>(Enchere.class));
+	}
+	
+	@GetMapping("/advanceSearch")
+	public void advanceSearch(@RequestParam("motCle") String motCle, @RequestParam("date") String date ,@RequestParam("prix") int prix , @RequestParam("categorie") int categorie, @RequestParam("status") int status) {
+		String sql ="select * from enchere e join materielle m on e.idmaterielle=m.id where 1=1 ";
+		if (!motCle.equals("")) {
+			sql += " and m.nom = '"+motCle+"'";
+		}
+		if (!date.equals("")) {
+			sql += " and e.datedepartenchere < '"+date+"'";
+		}
+		if (prix!=0) {
+			sql += " and m.prixminimal < "+ prix;
+		}
+		if (categorie!=0) {
+			sql += " and m.idcategory = "+categorie;
+		}
+		if (status==0 || status==1) {
+			sql += " and e.isfinish = "+status;
+		}
+		sql += ")";
+		System.out.println(sql);
+//		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where m.nom=''",  new BeanPropertyRowMapper<Enchere>(Enchere.class));
+	}
+	
 	@GetMapping("/addClient")
 	public String addClient(@RequestParam("nom") String nom , @RequestParam("mdp") String mdp) {
 		try {
