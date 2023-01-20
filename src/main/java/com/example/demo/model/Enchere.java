@@ -8,18 +8,10 @@ public class Enchere {
 	
 	String description;
 	
-	int prixdepart;
-	
 	LocalDate datedepartenchere ;
 	
 	int dureeenchere;
-	
-	int prixmax;
-	
-	int prixmin;
-	
-	int dureemin;
-	
+		
 	int idmaterielle;
 	
 	int isfinish;
@@ -29,6 +21,43 @@ public class Enchere {
 	int montantpayer;
 	
 	LocalDate dateajout;
+	
+	int commision;
+	
+	int qte;
+	
+	
+
+	public int getQte() {
+		return qte;
+	}
+
+	public void setQte(int qte) {
+		this.qte = qte;
+	}
+
+	public int getCommision() {
+		return commision;
+	}
+
+	public void setCommision(int commision) {
+		this.commision = commision;
+	}
+
+	public Enchere(int id, String description, LocalDate datedepartenchere, int dureeenchere, int idmaterielle,
+			int isfinish, int idGagnant, int montantpayer, LocalDate dateajout, int commision) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.datedepartenchere = datedepartenchere;
+		this.dureeenchere = dureeenchere;
+		this.idmaterielle = idmaterielle;
+		this.isfinish = isfinish;
+		this.idGagnant = idGagnant;
+		this.montantpayer = montantpayer;
+		this.dateajout = dateajout;
+		this.commision = commision;
+	}
 
 	public int getIdGagnant() {
 		return idGagnant;
@@ -82,13 +111,7 @@ public class Enchere {
 		this.description = description;
 	}
 
-	public int getPrixdepart() {
-		return prixdepart;
-	}
-
-	public void setPrixdepart(int prixdepart) {
-		this.prixdepart = prixdepart;
-	}
+	
 
 	public LocalDate getDatedepartenchere() {
 		return datedepartenchere;
@@ -106,29 +129,7 @@ public class Enchere {
 		this.dureeenchere = dureeenchere;
 	}
 
-	public int getPrixmax() {
-		return prixmax;
-	}
-
-	public void setPrixmax(int prixmax) {
-		this.prixmax = prixmax;
-	}
-
-	public int getPrixmin() {
-		return prixmin;
-	}
-
-	public void setPrixmin(int prixmin) {
-		this.prixmin = prixmin;
-	}
-
-	public int getDureemin() {
-		return dureemin;
-	}
-
-	public void setDureemin(int dureemin) {
-		this.dureemin = dureemin;
-	}
+	
 
 	
 
