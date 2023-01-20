@@ -3,13 +3,13 @@ package com.example.demo.model;
 import java.time.LocalDate;
 
 public class Token {
-
-	int idclient;
 	
 	String value;
 	
 	LocalDate dateajout;
 
+	int idclient;
+	
 	public Token() {
 		super();
 	}

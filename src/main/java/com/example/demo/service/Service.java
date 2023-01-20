@@ -105,11 +105,20 @@ public class Service {
 		return uuid.toString();
 	}
 	
+	@GetMapping("/allToken")
+	public List<Token> getAllToken() {
+		try {
+			return db.query("select * from token ",  new BeanPropertyRowMapper<Token>(Token.class));
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 	public int getIdClient(String uuid) {
 		try {
 			List<Token> users = db.query("select * from token where value='"+uuid+"' and dateajout > now()",  new BeanPropertyRowMapper<Token>(Token.class));
-			System.out.println(users.get(1).getIdclient());
-			return users.get(1).getIdclient();
+			return users.get(0).getIdclient();
 		} catch (Exception e) {
 			return 0;
 		}
