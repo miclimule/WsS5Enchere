@@ -321,7 +321,7 @@ public class Service {
 	
 	@GetMapping("/state")
 	public List<State> getState() {
-		return db.query("select  max(nbr) , min(nbr) , avg(nbr) , sqrt(VAR_SAMP(nbr)) from count_enchere", new BeanPropertyRowMapper<State>(State.class));
+		return db.query("select  max(nbr) , min(nbr) , avg(nbr) , sqrt(avg(nbr)) from count_enchere", new BeanPropertyRowMapper<State>(State.class));
 	}
 	
 	@GetMapping("/getDemande")
@@ -349,6 +349,8 @@ public class Service {
 			return "error : "+e.toString();
 		}
 	}
+	
+	
 //	@GetMapping("/json-to-object")
 //    public Couleur[] jsonToObject() throws IOException {
 //		URL url = new URL("http://localhost:8080/Departement");
