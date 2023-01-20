@@ -314,6 +314,7 @@ public class Service {
 	
 	@GetMapping("/getHistorique")
 	public List<Historique> getHistorique(@RequestParam("idEnchere") int idEnchere) {
+		
 		return db.query("select * from historique where idenchere = "+idEnchere, new BeanPropertyRowMapper<Historique>(Historique.class));
 	}
 	
