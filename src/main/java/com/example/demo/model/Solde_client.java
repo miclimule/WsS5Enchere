@@ -8,7 +8,18 @@ public class Solde_client {
 	
 	int isvalidate;
 
+	String nom;
 	
+	
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public int getIdClient() {
 		return idClient;
 	}

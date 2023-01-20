@@ -330,7 +330,7 @@ public class Service {
 	
 	@GetMapping("/getDemande")
 	public List<Solde_client> getDemande() {
-		return db.query("select * from solde_client where isvalidate = 0", new BeanPropertyRowMapper<Solde_client>(Solde_client.class));
+		return db.query("select * from solde_client s join client c on c.id=s.idclient  where isvalidate = 0", new BeanPropertyRowMapper<Solde_client>(Solde_client.class));
 	}
 	
 	@GetMapping("/addDemande")
