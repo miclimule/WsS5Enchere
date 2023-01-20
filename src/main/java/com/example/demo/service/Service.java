@@ -48,7 +48,9 @@ public class Service {
 	}
 	
 	@GetMapping("/setMongo")
-	public String testSetMongo() {
+	public String testSetMongo(@RequestParam("idUsers") int idUsers , @RequestParam("montant" )int montant,
+			@RequestParam("idMat") int idMat , @RequestParam("nom") String nom
+			) {
 		try {
 			JoueurCollection joueur = new JoueurCollection();
 			joueur.setIdJoueur(idUsers);
@@ -242,7 +244,7 @@ public class Service {
 	
 	@GetMapping("/getEnchere")
 	public List<Enchere> getEnchere() {
-		return db.query("select * from enchere", new BeanPropertyRowMapper<Enchere>(Enchere.class));
+		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id", new BeanPropertyRowMapper<Enchere>(Enchere.class));
 	}
 	
 	@GetMapping("/addEnchere")
