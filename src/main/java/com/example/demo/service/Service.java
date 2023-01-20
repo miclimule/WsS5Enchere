@@ -82,7 +82,7 @@ public class Service {
 		return admins;
 	}
 	
-//	@GetMapping("/createToken")
+	@GetMapping("/createToken")
 	public String createToken(int id , String uuid) {
 		LocalDate now = LocalDate.now();
 		db.update("insert into token values ('"+uuid+"','"+now.plusDays(1)+"',"+id+")");
@@ -109,7 +109,6 @@ public class Service {
 	public List<Token> getAllToken() {
 		try {
 			return db.query("select * from token ",  new BeanPropertyRowMapper<Token>(Token.class));
-			
 		} catch (Exception e) {
 			return null;
 		}
