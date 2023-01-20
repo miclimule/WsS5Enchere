@@ -309,7 +309,7 @@ public class Service {
 	
 	@GetMapping("/histoEnchereDetaille")
 	public List<Enchere> histoEnchere (@RequestParam("idEnchere") int idEnchere) {
-		return db.query("select * from enchere e join histo_enchere h on e.id=h.idenchere join client c on e.idgagnant = c.id where e.id="+idEnchere, new BeanPropertyRowMapper<Enchere>(Enchere.class));
+		return db.query("select * from enchere e join histo_enchere h on e.id=h.idenchere join client c on h.idgagnant = c.id where e.id="+idEnchere, new BeanPropertyRowMapper<Enchere>(Enchere.class));
 	}
 	
 	@GetMapping("/getHistorique")
