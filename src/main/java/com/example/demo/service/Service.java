@@ -198,7 +198,7 @@ public class Service {
 	
 	@GetMapping("/listEnchere")
 	public List<Enchere> listEnchere() {
-		return db.query("select * from enchere where isfinish = 0", new BeanPropertyRowMapper<Enchere>(Enchere.class));
+		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where isfinish = 0", new BeanPropertyRowMapper<Enchere>(Enchere.class));
 	}
 	
 	@GetMapping("/updateEnchere")
