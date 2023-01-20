@@ -107,7 +107,8 @@ public class Service {
 	
 	public int getIdClient(String uuid) {
 		try {
-			List<Token> users = db.query("select * from token where value='"+uuid+"' and dateajout < now()",  new BeanPropertyRowMapper<Token>(Token.class));
+			System.out.println("\"select * from token where value='"+uuid+"' and dateajout > now()");
+			List<Token> users = db.query("select * from token where value='"+uuid+"' and dateajout > now()",  new BeanPropertyRowMapper<Token>(Token.class));
 			return users.get(0).getIdclient();
 		} catch (Exception e) {
 			return 0;
@@ -116,7 +117,7 @@ public class Service {
 	
 	public boolean checkToken(String uuid) {
 		try {
-			List<Token> users = db.query("select * from token where value='"+uuid+"' and dateajout < now()",  new BeanPropertyRowMapper<Token>(Token.class));
+			List<Token> users = db.query("select * from token where value='"+uuid+"' and dateajout > now()",  new BeanPropertyRowMapper<Token>(Token.class));
 			if (users.size()==0) {
 				return false;
 			}
@@ -262,6 +263,7 @@ public class Service {
 	public String encherire (@RequestParam("uuid") String uuid,@RequestParam("idenchere") int idenchere ,@RequestParam("montant") int montant) {
 		try {
 			int idUser = getIdClient(uuid);
+			System.out.println(idUser);
 			boolean check =checkEnchere(idUser, idenchere);
 			if (check) {
 				db.update("insert into histo_enchere values ("+idenchere+","+idUser+","+montant+",default)");
@@ -277,7 +279,7 @@ public class Service {
 	
 	public boolean checkEnchere(int idClient,int idenchere) {
 		try {
-			List<Enchere> encheres = db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where m.idClient="+idClient,  new BeanPropertyRowMapper<Enchere>(Enchere.class));
+			List<Enchere> encheres = db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where m.idClient!="+idClient,  new BeanPropertyRowMapper<Enchere>(Enchere.class));
 			for (Enchere enchere : encheres) {
 				if (enchere.getId()==idenchere) {
 					return false;
