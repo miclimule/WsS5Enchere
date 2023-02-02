@@ -1,18 +1,16 @@
 package com.example.demo.service;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.collection.HistoCollection;
@@ -20,18 +18,14 @@ import com.example.demo.collection.JoueurCollection;
 import com.example.demo.collection.MaterielleCollection;
 import com.example.demo.model.Admins;
 import com.example.demo.model.Category;
-import com.example.demo.model.Client;
 import com.example.demo.model.Enchere;
+import com.example.demo.model.FCMNotificationService;
 import com.example.demo.model.Historique;
 import com.example.demo.model.Materielle;
-import com.example.demo.model.Note;
 import com.example.demo.model.Solde_client;
 import com.example.demo.model.State;
 import com.example.demo.model.Token;
 import com.example.demo.repository.HistoRepository;
-import com.example.demo.testFireBase.FirebaseMessagingService;
-import com.example.demo.testFireBase.Messaging;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 
 import database.GenericDAO;
@@ -56,6 +50,12 @@ public class Service {
 //	@ResponseBody
 //	public String sendNotification(@RequestBody Note note,@RequestParam String token) throws FirebaseMessagingException {
 //	    return service.sendNotification(note, token);
+//	}
+	
+//	@GetMapping("/testNotif")
+//	private void testNotif() throws FirebaseMessagingException, IOException {
+//		FCMNotificationService fcmNotificationService = new FCMNotificationService();
+//		fcmNotificationService.sendNotification("https://oauth2.googleapis.com/token", "miclimule", "you touch my tralala");
 //	}
 	
 	@GetMapping("/getMongo")
