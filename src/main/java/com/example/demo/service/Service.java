@@ -46,17 +46,17 @@ public class Service {
 	JdbcTemplate db;
 	GenericDAO dao = new GenericDAO();
 	
-	FirebaseMessaging firebaseMessaging = Messaging.firebaseMessaging();
-	FirebaseMessagingService service = new FirebaseMessagingService(firebaseMessaging);
+//	FirebaseMessaging firebaseMessaging = Messaging.firebaseMessaging();
+//	FirebaseMessagingService service = new FirebaseMessagingService(firebaseMessaging);
 	
 	static int idUsers = 1;
 	static int idAdmins = 1;
 	
-	@GetMapping("/send-notification")
-	@ResponseBody
-	public String sendNotification(@RequestBody Note note,@RequestParam String token) throws FirebaseMessagingException {
-	    return service.sendNotification(note, token);
-	}
+//	@GetMapping("/send-notification")
+//	@ResponseBody
+//	public String sendNotification(@RequestBody Note note,@RequestParam String token) throws FirebaseMessagingException {
+//	    return service.sendNotification(note, token);
+//	}
 	
 	@GetMapping("/getMongo")
 	public List<HistoCollection> testMongo() {
