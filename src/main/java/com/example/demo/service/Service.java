@@ -10,7 +10,9 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.collection.HistoCollection;
@@ -22,10 +24,15 @@ import com.example.demo.model.Client;
 import com.example.demo.model.Enchere;
 import com.example.demo.model.Historique;
 import com.example.demo.model.Materielle;
+import com.example.demo.model.Note;
 import com.example.demo.model.Solde_client;
 import com.example.demo.model.State;
 import com.example.demo.model.Token;
 import com.example.demo.repository.HistoRepository;
+import com.example.demo.testFireBase.FirebaseMessagingService;
+import com.example.demo.testFireBase.Messaging;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingException;
 
 import database.GenericDAO;
 
@@ -39,8 +46,17 @@ public class Service {
 	JdbcTemplate db;
 	GenericDAO dao = new GenericDAO();
 	
+	FirebaseMessaging firebaseMessaging = Messaging.firebaseMessaging();
+	FirebaseMessagingService service = new FirebaseMessagingService(firebaseMessaging);
+	
 	static int idUsers = 1;
 	static int idAdmins = 1;
+	
+	@GetMapping("/send-notification")
+	@ResponseBody
+	public String sendNotification(@RequestBody Note note,@RequestParam String token) throws FirebaseMessagingException {
+	    return service.sendNotification(note, token);
+	}
 	
 	@GetMapping("/getMongo")
 	public List<HistoCollection> testMongo() {
