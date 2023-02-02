@@ -16,6 +16,7 @@ import com.google.firebase.messaging.Aps;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
+import com.google.firebase.messaging.Notification.Builder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -24,15 +25,15 @@ public class FCMService {
     private Logger logger = LoggerFactory.getLogger(FCMService.class);
     
     
-//    public void sendMessageToToken(PushNotificationRequest request)
-//            throws InterruptedException, ExecutionException {
-//        Message message = getPreconfiguredMessageToToken(request);
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        String jsonOutput = gson.toJson(message);
-//        String response = sendAndGetResponse(message);
-//        logger.info("Sent message to token. Device token: " + request.getToken() + ", " + response+ " msg "+jsonOutput);
-//    }
-//    
+    public void sendMessageToToken(PushNotificationRequest request)
+            throws InterruptedException, ExecutionException {
+        Message message = getPreconfiguredMessageToToken(request);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonOutput = gson.toJson(message);
+        String response = sendAndGetResponse(message);
+        logger.info("Sent message to token. Device token: " + request.getToken() + ", " + response+ " msg "+jsonOutput);
+    }
+    
     private String sendAndGetResponse(Message message) throws InterruptedException, ExecutionException {
         return FirebaseMessaging.getInstance().sendAsync(message).get();
     }
@@ -49,23 +50,26 @@ public class FCMService {
         return ApnsConfig.builder()
                 .setAps(Aps.builder().setCategory(topic).setThreadId(topic).build()).build();
     }
-//    private Message getPreconfiguredMessageToToken(PushNotificationRequest request) {
-//        return getPreconfiguredMessageBuilder(request).setToken(request.getToken())
-//                .build();
-//    }
-//    private Message getPreconfiguredMessageWithoutData(PushNotificationRequest request) {
-//        return getPreconfiguredMessageBuilder(request).setTopic(request.getTopic())
-//                .build();
-//    }
-//    private Message getPreconfiguredMessageWithData(Map<String, String> data, PushNotificationRequest request) {
-//        return getPreconfiguredMessageBuilder(request).putAllData(data).setToken(request.getToken())
-//                .build();
-//    }
-//    private Message.Builder getPreconfiguredMessageBuilder(PushNotificationRequest request) {
-//        AndroidConfig androidConfig = getAndroidConfig(request.getTopic());
-//        ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
-//        return Message.builder()
-//                .setApnsConfig(apnsConfig).setAndroidConfig(androidConfig).setNotification(
-//                        new Notification(request.getTitle(), request.getMessage()));
-//    }
+    private Message getPreconfiguredMessageToToken(PushNotificationRequest request) {
+        return getPreconfiguredMessageBuilder(request).setToken(request.getToken())
+                .build();
+    }
+    private Message getPreconfiguredMessageWithoutData(PushNotificationRequest request) {
+        return getPreconfiguredMessageBuilder(request).setTopic(request.getTopic())
+                .build();
+    }
+    private Message getPreconfiguredMessageWithData(Map<String, String> data, PushNotificationRequest request) {
+        return getPreconfiguredMessageBuilder(request).putAllData(data).setToken(request.getToken())
+                .build();
+    }
+    private Message.Builder getPreconfiguredMessageBuilder(PushNotificationRequest request) {
+        AndroidConfig androidConfig = getAndroidConfig(request.getTopic());
+        ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
+        Builder builder = Notification.builder();
+        builder.setTitle(request.getTitle());
+        builder.setBody(request.getMessage());
+        return Message.builder()
+                .setApnsConfig(apnsConfig).setAndroidConfig(androidConfig).setNotification(
+                        builder.build());
+    }
 }

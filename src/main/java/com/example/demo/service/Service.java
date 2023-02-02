@@ -6,10 +6,14 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +26,8 @@ import com.example.demo.model.Enchere;
 import com.example.demo.model.FCMNotificationService;
 import com.example.demo.model.Historique;
 import com.example.demo.model.Materielle;
+import com.example.demo.model.PushNotificationRequest;
+import com.example.demo.model.PushNotificationResponse;
 import com.example.demo.model.Solde_client;
 import com.example.demo.model.State;
 import com.example.demo.model.Token;
@@ -57,7 +63,19 @@ public class Service {
 //		FCMNotificationService fcmNotificationService = new FCMNotificationService();
 //		fcmNotificationService.sendNotification("https://oauth2.googleapis.com/token", "miclimule", "you touch my tralala");
 //	}
-	
+	private PushNotificationService pushNotificationService;
+    
+    public Service(PushNotificationService pushNotificationService) {
+        this.pushNotificationService = pushNotificationService;
+    }
+    
+    @PostMapping("/notification/token")
+    public ResponseEntity sendTokenNotification(@RequestBody PushNotificationRequest request) {
+        pushNotificationService.sendPushNotificationToToken(request);
+        System.out.println("princr");
+        return new ResponseEntity<>(new PushNotificationResponse(HttpStatus.OK.value(), "Notification has been sent."), HttpStatus.OK);
+    }
+    
 	@GetMapping("/getMongo")
 	public List<HistoCollection> testMongo() {
 		return histoRepository.findAll();
