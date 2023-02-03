@@ -207,7 +207,6 @@ public class Service {
 		if (status==0 || status==1) {
 			sql += " or e.isfinish = "+status;
 		}
-		sql += ")";
 		System.out.println(sql);
 		return db.query(sql,  new BeanPropertyRowMapper<Enchere>(Enchere.class));
 	}
