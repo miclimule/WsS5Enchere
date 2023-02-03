@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 public class Solde_client {
 
+	int id;
+	
 	int idClient;
 	
 	int montant;
@@ -12,6 +14,14 @@ public class Solde_client {
 	
 	
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNom() {
 		return nom;
 	}
