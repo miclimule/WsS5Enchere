@@ -31,6 +31,7 @@ import com.example.demo.model.PushNotificationResponse;
 import com.example.demo.model.Solde_client;
 import com.example.demo.model.State;
 import com.example.demo.model.Token;
+import com.example.demo.model.img_materille;
 import com.example.demo.repository.HistoRepository;
 import com.google.firebase.messaging.FirebaseMessagingException;
 
@@ -263,6 +264,16 @@ public class Service {
 	@GetMapping("/getProduit")
 	public List<Materielle> getProduit() {
 		return db.query("select * from materielle",new BeanPropertyRowMapper<Materielle>(Materielle.class));
+	}
+	
+	@GetMapping("/getImgProduit")
+	public List<img_materille> getImgProduit() {
+		return db.query("select * from img_materille",new BeanPropertyRowMapper<img_materille>(img_materille.class));
+	}
+	
+	@GetMapping("/setImgProduit")
+	private void setImgProduit(String base64 , int idMat) {
+		db.update("insert into img_materille values ("+idMat+" , '"+base64+"')");
 	}
 	
 	@GetMapping("/addProduit")
