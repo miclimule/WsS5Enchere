@@ -271,9 +271,9 @@ public class Service {
 		return db.query("select * from img_materille",new BeanPropertyRowMapper<img_materille>(img_materille.class));
 	}
 	
-	@GetMapping("/setImgProduit")
-	private void setImgProduit(String base64 , int idMat) {
-		db.update("insert into img_materille values ("+idMat+" , '"+base64+"')");
+	@PostMapping("/setImgProduit")
+	private void setImgProduit(@RequestBody Data base64) {
+		db.update("insert into img_materille values ("+base64.getId()+" , '"+base64.getBase64()+"')");
 	}
 	
 	@GetMapping("/addProduit")
