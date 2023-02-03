@@ -416,7 +416,7 @@ public class Service {
 	
 	@GetMapping("/getSolde")
 	private void getSolde(int id) {
-		db.update("select idClient , sum(montant) from solde_client where isvalidate = 1 group by idClient");
+		db.update("select idClient , sum(montant) from solde_client where isvalidate = 1 group by idClient"); 
 	}
 	
 //	@GetMapping("/json-to-object")
