@@ -416,7 +416,7 @@ public class Service {
 	
 	@GetMapping("/getSolde")
 	private List<Solde_client> getSolde(int id) {
-		return db.query("select idClient , sum(montant) from solde_client where isvalidate = 1 and idClient = "+id+" group by idClient", new BeanPropertyRowMapper<Solde_client>(Solde_client.class)); 
+		return db.query("select idClient , sum(montant) as montant from solde_client where isvalidate = 1 and idClient = "+id+" group by idClient", new BeanPropertyRowMapper<Solde_client>(Solde_client.class)); 
 	}
 	
 //	@GetMapping("/json-to-object")
