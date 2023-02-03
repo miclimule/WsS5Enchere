@@ -89,10 +89,10 @@ public class Service {
 		try {
 			JoueurCollection joueur = new JoueurCollection();
 			joueur.setIdJoueur(idUsers);
-			joueur.setMontant(6000);
+			joueur.setMontant(montant);
 			MaterielleCollection collection = new MaterielleCollection();
-			collection.setIdMaterielle(2);
-			collection.setNom("tableau");
+			collection.setIdMaterielle(idMat);
+			collection.setNom(nom);
 			HistoCollection histo = new HistoCollection();
 			histo.setJoueur(joueur);
 			histo.setMaterielle(collection);
@@ -414,6 +414,10 @@ public class Service {
 		}
 	}
 	
+	@GetMapping("/getSolde")
+	private void getSolde(int id) {
+		db.update("select idClient , sum(montant) from solde_client where isvalidate = 1 group by idClient");
+	}
 	
 //	@GetMapping("/json-to-object")
 //    public Couleur[] jsonToObject() throws IOException {
