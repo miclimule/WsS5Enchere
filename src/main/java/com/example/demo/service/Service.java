@@ -292,6 +292,11 @@ public class Service {
 		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id", new BeanPropertyRowMapper<Enchere>(Enchere.class));
 	}
 	
+	@GetMapping("/getMyEnchere")
+	public List<Enchere> getMyEnchere(int id) {
+		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where m.idClient = "+id, new BeanPropertyRowMapper<Enchere>(Enchere.class));
+	}
+	
 	@GetMapping("/addEnchere")
 	public String addEnchere (@RequestParam("desc")String desc,@RequestParam("datedepart")String datedepart,@RequestParam("duree")int duree,@RequestParam("idmaterielle")int idmaterielle,@RequestParam("qte")int qte){
 		try {
