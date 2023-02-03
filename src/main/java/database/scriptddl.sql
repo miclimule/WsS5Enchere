@@ -51,7 +51,7 @@ CREATE TABLE materielle (
 
 CREATE TABLE img_materille (
 	idmaterielle int4 NULL,
-	"ref" varchar(255) NULL,
+	"ref" text NULL,
 	CONSTRAINT img_materille_idmaterielle_fkey FOREIGN KEY (idmaterielle) REFERENCES materielle(id)
 );
 

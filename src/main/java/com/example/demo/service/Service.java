@@ -337,6 +337,7 @@ public class Service {
 			boolean check =checkEnchere(idUser, idenchere);
 			if (check) {
 				db.update("insert into histo_enchere values ("+idenchere+","+idUser+","+montant+",default)");
+				testSetMongo(idUser, montant, idenchere, uuid);
 				return "finish";
 			}
 			else {
