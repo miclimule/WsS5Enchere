@@ -190,7 +190,7 @@ public class Service {
 	}
 	
 	@GetMapping("/advanceSearch")
-	public void advanceSearch(@RequestParam("motCle") String motCle, @RequestParam("date") String date ,@RequestParam("prix") int prix , @RequestParam("categorie") int categorie, @RequestParam("status") int status) {
+	public List<Enchere> advanceSearch(@RequestParam("motCle") String motCle, @RequestParam("date") String date ,@RequestParam("prix") int prix , @RequestParam("categorie") int categorie, @RequestParam("status") int status) {
 		String sql ="select * from enchere e join materielle m on e.idmaterielle=m.id where 1=1 ";
 		if (!motCle.equals("")) {
 			sql += " or m.nom = '"+motCle+"'";
@@ -209,7 +209,7 @@ public class Service {
 		}
 		sql += ")";
 		System.out.println(sql);
-//		return db.query("select * from enchere e join materielle m on e.idmaterielle=m.id where m.nom=''",  new BeanPropertyRowMapper<Enchere>(Enchere.class));
+		return db.query(sql,  new BeanPropertyRowMapper<Enchere>(Enchere.class));
 	}
 	
 	@GetMapping("/addClient")
