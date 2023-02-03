@@ -266,9 +266,19 @@ public class Service {
 		return db.query("select * from materielle",new BeanPropertyRowMapper<Materielle>(Materielle.class));
 	}
 	
+	@GetMapping("/produit")
+	public List<Materielle> produit( int id) {
+		return db.query("select * from materielle where id = "+id,new BeanPropertyRowMapper<Materielle>(Materielle.class));
+	}
+	
 	@GetMapping("/getImgProduit")
 	public List<img_materille> getImgProduit() {
 		return db.query("select * from img_materille",new BeanPropertyRowMapper<img_materille>(img_materille.class));
+	}
+	
+	@GetMapping("/getImg")
+	public List<img_materille> getImg(int id) {
+		return db.query("select * from img_materille where idmaterielle = " + id,new BeanPropertyRowMapper<img_materille>(img_materille.class));
 	}
 	
 	@PostMapping("/setImgProduit")
